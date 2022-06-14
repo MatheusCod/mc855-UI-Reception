@@ -1,0 +1,46 @@
+<div class="container" fxLayout="column" fxFill fxLayoutAlign="center center">
+  <div
+    class="login-container"
+  >
+    <div class="content" fxLayout="column" fxLayoutAlign="center center">
+      <h1 class="title">Login</h1>
+      <form
+        class="forms-container"
+        fxLayout="column"
+        fxLayoutAlign="center center"
+      >
+        <mat-form-field class="fields" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            [formControl]="emailFormControl"
+            placeholder="Ex. pat@example.com"
+          >
+          <mat-error
+            *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')"
+          >
+            Por favor digite um email válido
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            O endereço de email é <strong>necessário</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="fields" appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input
+            type="password"
+            matInput
+            [formControl]="passwordFormControl"
+            placeholder="Password"
+          >
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            A senha é <strong>necessária</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <button mat-raised-button color="primary">Logar</button>
+    </div>
+  </div>
+<div>
