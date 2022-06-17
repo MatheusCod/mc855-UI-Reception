@@ -1,0 +1,15 @@
+<mat-card
+  matRipple
+  class="container"
+  [ngClass]="{'selected': selected}"
+  [ngStyle]="getStatusStyle()"
+>
+  <mat-card-title>Paciente n°: {{patientNumber}}</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content class="content">
+    Tipo de consulta: {{description}}
+  </mat-card-content>
+  <mat-card-content>
+    Status: {{getPatientStatus()}}
+  </mat-card-content>
+</mat-card>
