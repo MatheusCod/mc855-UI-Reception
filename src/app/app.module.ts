@@ -14,12 +14,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PatientCardComponent } from './patient-card/patient-card.component';
 import { MatRippleModule } from '@angular/material/core';
+import { PatientsListComponent } from './patients-list/patients-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PatientCardComponent
+    PatientCardComponent,
+    PatientsListComponent,
   ],
   imports: [
     BrowserModule,
