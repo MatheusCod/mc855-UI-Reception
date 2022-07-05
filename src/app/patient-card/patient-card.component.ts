@@ -9,11 +9,18 @@ export interface Patient {
   patientStatusId: StatusId;
 };
 
-const patientStatus = {
+export const patientStatus = {
   'waiting_line': 'Esperando na Fila',
   'waiting_doctor': 'Aguardando Atendimento',
   'waiting_definition': 'Aguarda Definição',
   'done': 'Já atendido',
+} as const;
+
+export const invertedPatientStatus = {
+  'Esperando na Fila': 'waiting_line',
+  'Aguardando Atendimento': 'waiting_doctor',
+  'Aguarda Definição': 'waiting_definition',
+  'Já atendido': 'done',
 } as const;
 
 const statusStyle = {
