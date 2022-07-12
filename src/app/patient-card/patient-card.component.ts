@@ -1,12 +1,26 @@
 import { Component, Input } from '@angular/core';
 
-type StatusId = 'waiting_line' | 'waiting_doctor' | 'waiting_definition' | 'done';
+export type StatusId = 'waiting_line' | 'waiting_doctor' | 'waiting_definition' | 'done';
 
-const patientStatus = {
+export interface Patient {
+  patientNumber: number;
+  description: string;
+  selected: boolean;
+  patientStatusId: StatusId;
+};
+
+export const patientStatus = {
   'waiting_line': 'Esperando na Fila',
   'waiting_doctor': 'Aguardando Atendimento',
   'waiting_definition': 'Aguarda Definição',
   'done': 'Já atendido',
+} as const;
+
+export const invertedPatientStatus = {
+  'Esperando na Fila': 'waiting_line',
+  'Aguardando Atendimento': 'waiting_doctor',
+  'Aguarda Definição': 'waiting_definition',
+  'Já atendido': 'done',
 } as const;
 
 const statusStyle = {
@@ -37,6 +51,8 @@ export class PatientCardComponent {
   }
 
   getStatusStyle() {
-    return statusStyle[this.patientStatusId];
+    return this.selected
+      ? { backgroundColor: '#beffba' } // Green background
+      : statusStyle[this.patientStatusId];
   }
 }

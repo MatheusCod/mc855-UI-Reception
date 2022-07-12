@@ -1,0 +1,70 @@
+<div class="container" fxLayout="column" fxLayoutAlign="space-between center">
+    <app-info
+        title="Nome do responsável:"
+        [description]="patientDetails.responsibleName"
+    >
+    </app-info>
+    <app-info
+        title="Nome do paciente:"
+        [description]="patientDetails.name"
+    >
+    </app-info>
+    <app-info
+        title="Data de Nascimento:"
+        [description]="patientDetails.birthDate.toString()"
+    >
+    </app-info>
+    <app-info
+        title="Número de CNS:"
+        [description]="patientDetails.CNS"
+    >
+    </app-info>
+    <app-info
+        title="Paciente está sob tratamento?"
+        [description]="booleanToPortuguese(patientDetails.undergoingThreatment)"
+    >
+    </app-info>
+    <app-info
+        title="Paciente está sob medicação?"
+        [description]="booleanToPortuguese(patientDetails.undergoingMedicine)"
+    >
+    </app-info>
+    <app-info
+        title="Paciente possui doença crônica?"
+        [description]="booleanToPortuguese(patientDetails.hasChronicDisease)"
+    >
+    </app-info>
+    <app-info
+        title="Motivo da vinda:"
+        [description]="patientDetails.problemDescription"
+    >
+    </app-info>
+    <app-info
+        title="Paciente requer tratamento especial?"
+        [description]="patientDetails.specialityRequired"
+    >
+    </app-info>
+    <app-info
+        title="Paciente está agendado?"
+        [description]="booleanToPortuguese(patientDetails.isScheduled)"
+    >
+    </app-info>
+    <mat-card>
+        <strong>Status do paciente</strong>
+        <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Status do paciente</mat-label>
+            <mat-select
+                #matSelect
+                (selectionChange)="changeStatus(matSelect.value)">
+                <mat-option
+                    *ngFor="let status of patientStatusOptions | keyvalue"
+                    [value]="status.value"
+                >
+                    {{status.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        </div>
+    </mat-card>
+</div>

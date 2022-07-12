@@ -1,0 +1,12 @@
+<div class="container" fxLayout="column" fxLayoutAlign="space-between center">
+  <div class="cards" *ngFor="let patient of patients">
+    <app-patient-card
+      [patientNumber]="patient.patientNumber"
+      [description]="patient.description"
+      [selected]="selected === patient.patientNumber ? true : false"
+      [patientStatusId]="patient.patientStatusId"
+      (click)="selectCard(patient.patientNumber)"
+    >
+    </app-patient-card>
+  </div>
+</div>
