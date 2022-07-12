@@ -1,0 +1,26 @@
+<div
+    class="container"
+    fxLayout="row"
+    fxFill
+    fxLayoutAlign="center center"
+>
+    <div
+        fxLayout="column"
+        fxLayoutAlign="center center"
+    >
+        <h1>Lista de pacientes</h1>
+        <app-patients-list
+            [patientsList]="patientsList"
+            (patientChanged)="patientChanged($event)"
+        >
+        </app-patients-list>
+    </div>
+    <div
+        fxLayout="column"
+        fxLayoutAlign="center center"    
+    >
+        <h1>Detalhes do paciente</h1>
+        <app-patient-details [patientDetails]="patientDetails">
+        </app-patient-details>
+    </div>
+</div>

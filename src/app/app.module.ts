@@ -22,6 +22,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { PatientsListComponent } from './patients-list/patients-list.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { InfoComponent } from './patient-details/info/info.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { InfoComponent } from './patient-details/info/info.component';
     PatientsListComponent,
     PatientDetailsComponent,
     InfoComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,

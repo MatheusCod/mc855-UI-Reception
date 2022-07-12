@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "https://pacient-api.herokuapp.com/pacients",
+        "secure": false
+    }
+}
