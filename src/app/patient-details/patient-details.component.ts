@@ -3,8 +3,9 @@ import {
   patientStatus as statusOptions,
   invertedPatientStatus as invertedStatusOptions,
 } from 'src/app/patient-card/patient-card.component';
+import { booleanToPortuguese } from 'src/utils/utils';
 
-interface PatientDetails {
+export interface PatientDetails {
   timestamp: Date;
   responsibleName: string;
   name: string;
@@ -45,16 +46,13 @@ export class PatientDetailsComponent{
   
   @Input() status!: string;
 
-  booleanToPortuguese(bool: boolean): 'SIM' | 'NÃO'  {
-    return bool ? 'SIM' : 'NÃO';
-  }
-
   constructor() { }
 
   // MOCK
   changeStatus(value: keyof typeof invertedStatusOptions) {
     const statusId = invertedStatusOptions[value];
-    console.log(statusId);
   }
+
+  booleanToPortuguese = booleanToPortuguese;
 
 }
