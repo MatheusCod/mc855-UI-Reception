@@ -21,19 +21,25 @@ export class MainComponent implements OnInit{
   ngOnInit(): void {
     this.dataService.getData().subscribe(data => {
       this.patientsList = data.map(value => {
+        console.log(value)
         return {
-          timestamp: value.timestamp,
+          timestamp: value.date_created,
           responsibleName: value.responsible_name,
-          name: value.pacient_name,
-          birthDate: value.pacient_birthdate,
-          CNS: value.pacient_cns,
-          undergoingThreatment: portugueseToBoolean(value.pacient_undergoing_threatment),
-          undergoingMedicine: portugueseToBoolean(value.pacient_undergoing_medicine),
-          hasChronicDisease: portugueseToBoolean(value.has_chronic_disease),
-          problemDescription: value.pacient_problem,
-          specialityRequired: value.speciality_required,
-          isScheduled: portugueseToBoolean(value.has_schedule),
-          scheduleDate: value.schedule_date,
+          name: value.name,
+          status: value.status,
+          id: value.id
+          // timestamp: value.date_created,
+          // responsibleName: value.responsible_name,
+          // name: value.pacient_name,
+          // birthDate: value.pacient_birthdate,
+          // CNS: value.pacient_cns,
+          // undergoingThreatment: portugueseToBoolean(value.pacient_undergoing_threatment),
+          // undergoingMedicine: portugueseToBoolean(value.pacient_undergoing_medicine),
+          // hasChronicDisease: portugueseToBoolean(value.has_chronic_disease),
+          // problemDescription: value.pacient_problem,
+          // specialityRequired: value.speciality_required,
+          // isScheduled: portugueseToBoolean(value.has_schedule),
+          // scheduleDate: value.schedule_date,
         };
       });
       this.patientChanged(0);

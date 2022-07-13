@@ -9,7 +9,6 @@ import type { PatientDetails } from '../patient-details/patient-details.componen
 
 interface PatientOverview {
   patientNumber: number;
-  description: string;
   selected: boolean;
   patientStatusId: StatusId;
 }
@@ -25,7 +24,6 @@ export class PatientsListComponent implements OnChanges{
 
   @Output() patientChanged = new EventEmitter<number>();
 
-  // MOCK
   @Input() patientsList!: PatientDetails[];
 
   @Input() patients!: PatientOverview[];
@@ -35,9 +33,8 @@ export class PatientsListComponent implements OnChanges{
     this.patients = this.patientsList.map((value, index) => {
       const patient: Patient = {
         patientNumber: index,
-        description: value.problemDescription,
         selected: false,
-        patientStatusId: 'waiting_line',
+        patientStatusId: value.status,
       };
       return patient;
     });

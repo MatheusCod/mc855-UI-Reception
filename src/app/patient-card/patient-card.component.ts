@@ -4,7 +4,6 @@ export type StatusId = 'waiting_line' | 'waiting_doctor' | 'waiting_definition' 
 
 export interface Patient {
   patientNumber: number;
-  description: string;
   selected: boolean;
   patientStatusId: StatusId;
 };
@@ -37,8 +36,6 @@ const statusStyle = {
 })
 export class PatientCardComponent {
   @Input() patientNumber = 999;
-
-  @Input() description = 'lorem ipsum something something';
 
   @Input() selected = false;
 
