@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from '@angular/core';
 
 import type {
   StatusId,
@@ -18,8 +24,7 @@ interface PatientOverview {
   templateUrl: './patients-list.component.html',
   styleUrls: ['./patients-list.component.scss'],
 })
-export class PatientsListComponent implements OnChanges{
-
+export class PatientsListComponent implements OnChanges {
   selected = 0;
 
   @Output() patientChanged = new EventEmitter<number>();
@@ -30,7 +35,13 @@ export class PatientsListComponent implements OnChanges{
 
   ngOnChanges() {
     if (!this.patientsList) return;
-    this.patients = this.patientsList.map((value, index) => {
+    let sortedList = this.patientsList.sort((b, a) => {
+      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+    }).filter((a) => {
+      return ((new Date().getTime() - new Date(a.timestamp).getTime()) < 60 * 60 * 1000) && a.status != "done"
+    })
+    ;
+    this.patients = sortedList.map((value, index) => {
       const patient: Patient = {
         patientNumber: index,
         selected: false,
