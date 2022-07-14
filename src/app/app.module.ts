@@ -10,6 +10,9 @@ import { LoginComponent } from './login/login.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -23,6 +26,7 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { InfoComponent } from './patient-details/info/info.component';
 import { MainComponent } from './main/main.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { AuthInterceptor } from './auth.interceptor';
     PatientDetailsComponent,
     InfoComponent,
     MainComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,9 @@ import { AuthInterceptor } from './auth.interceptor';
     HttpClientModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatTooltipModule,
   ],
   providers: [
     HttpService,
