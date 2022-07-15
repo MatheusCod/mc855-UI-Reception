@@ -27,7 +27,7 @@ interface PatientData {
   providedIn: 'root'
 })
 export class DataService {
-  url = 'api/patients';
+  url = 'https://pacient-api.herokuapp.com/patients';
 
   constructor(private http:HttpClient) { }
 
@@ -38,7 +38,7 @@ export class DataService {
   updateStatus(id: String, statusId: StatusId) {
     return this.http.post<{
       id: String
-    }>('api/patient/update', {
+    }>('https://pacient-api.herokuapp.com/patient/update', {
         id: id,
         status: statusId.toString()
     });

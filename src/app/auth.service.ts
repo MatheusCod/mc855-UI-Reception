@@ -12,7 +12,7 @@ export class AuthService {
 
   login(userName: string, password: string): Observable<any> {
     return this.http
-      .post('api/login', {
+      .post('https://pacient-api.herokuapp.com/login', {
         email: userName,
         password: password,
       })
