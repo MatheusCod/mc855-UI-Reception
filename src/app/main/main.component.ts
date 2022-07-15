@@ -16,14 +16,14 @@ export class MainComponent implements OnInit{
 
   patientDetails!: PatientDetails;
 
-  patientsList!: PatientDetails[];
+  patientsList: PatientDetails[] = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
     const poll = of({}).pipe(
       map(_ => this.getLoopData()),
-      delay(1000),
+      delay(5000),
       repeat()
     );
 
@@ -31,20 +31,16 @@ export class MainComponent implements OnInit{
   }
 
   getLoopData() {
-    console.log("called")
     try {
       this.dataService.getData().subscribe(data => {
         this.getPatientData(data);
       });
     } catch(ex) {
-      console.log("Error")
     }
-    console.log("call again")
   }
 
   private getPatientData(data: any[]) {
     this.patientsList = data.map(value => {
-      console.log(value);
       return {
         timestamp: value.date_created,
         responsibleName: value.responsible_name,
@@ -64,6 +60,10 @@ export class MainComponent implements OnInit{
         // isScheduled: portugueseToBoolean(value.has_schedule),
         // scheduleDate: value.schedule_date,
       };
+    }).sort((b, a) => {
+      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+    }).filter((a) => {
+      return ((new Date().getTime() - new Date(a.timestamp).getTime()) < 60 * 60 * 1000) && a.status != "done"
     });
     this.patientChanged(0);
   }

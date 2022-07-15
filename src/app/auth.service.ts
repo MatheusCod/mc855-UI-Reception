@@ -17,14 +17,12 @@ export class AuthService {
         password: password,
       })
       .pipe(map((result) => {
-        console.log(result)
         this.setSession(result);
       }));
   }
 
   private setSession(authResult: any) {
     const expiresAt = moment().add(authResult.expiresIn, 'second');
-    console.log(authResult)
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }

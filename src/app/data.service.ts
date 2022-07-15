@@ -36,7 +36,6 @@ export class DataService {
   }
 
   updateStatus(id: String, statusId: StatusId) {
-    console.log(statusId)
     return this.http.post<{
       id: String
     }>('api/patient/update', {

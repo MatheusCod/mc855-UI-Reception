@@ -38,9 +38,7 @@ export class PatientDetailsComponent{
 
   changeStatus(value: keyof typeof invertedStatusOptions) {
     const statusId = invertedStatusOptions[value];
-    this.dataService.updateStatus(this.patientDetails.id, statusId).subscribe((result) => {
-      console.log(result);
-    });
+    this.dataService.updateStatus(this.patientDetails.id, statusId).subscribe((result) => {    });
   }
 
   booleanToPortuguese = booleanToPortuguese;

@@ -1,11 +1,11 @@
-<app-navbar></app-navbar>
-<div
+<div style="padding: 5px"
     class="container"
     fxLayout="row"
     fxFill
     fxLayoutAlign="center center"
+    *ngIf="patientsList.length > 0; else nopatients"
 >
-    <div
+      <div
         fxLayout="column"
         fxLayoutAlign="center center"
     >
@@ -25,3 +25,8 @@
         </app-patient-details>
     </div>
 </div>
+
+<ng-template #nopatients>
+  <br>
+  <h3>Nenhum paciente por enquanto...</h3>
+</ng-template>

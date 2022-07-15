@@ -38,7 +38,7 @@ export class PatientsListComponent implements OnChanges {
     let sortedList = this.patientsList.sort((b, a) => {
       return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
     }).filter((a) => {
-      return ((new Date().getTime() - new Date(a.timestamp).getTime()) > 60 * 60 * 1000) && a.status == "waiting_doctor"
+      return ((new Date().getTime() - new Date(a.timestamp).getTime()) < 60 * 60 * 1000) && a.status != "done"
     })
     ;
     this.patients = sortedList.map((value, index) => {

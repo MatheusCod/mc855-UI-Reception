@@ -29,7 +29,7 @@ export class LoginComponent{
     const pwd = this.passwordFormControl.value
 
     this.authService.login(email ? email : '', pwd ? pwd : '').subscribe(() => {
-      this.router.navigateByUrl('/main')
+      this.router.navigateByUrl('/nav')
     })
   }
 }

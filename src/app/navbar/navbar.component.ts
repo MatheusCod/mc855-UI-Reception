@@ -18,4 +18,12 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.router.navigateByUrl('/');
   }
+
+  navigateToMain() {
+    this.router.navigateByUrl('/main')
+  }
+
+  navigateToGraphs() {
+    this.router.navigateByUrl('/charts')
+  }
 }

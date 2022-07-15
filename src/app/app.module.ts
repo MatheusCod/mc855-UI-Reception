@@ -3,6 +3,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxChartsModule }from '@swimlane/ngx-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { MatCardModule } from '@angular/material/card';
@@ -27,6 +29,7 @@ import { InfoComponent } from './patient-details/info/info.component';
 import { MainComponent } from './main/main.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ChartsComponent } from './charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     InfoComponent,
     MainComponent,
     NavbarComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatToolbarModule,
     MatIconModule,
     MatTooltipModule,
+    NgxChartsModule,
+    MatTabsModule,
   ],
   providers: [
     HttpService,
