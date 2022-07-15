@@ -15,6 +15,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -30,6 +31,7 @@ import { MainComponent } from './main/main.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ChartsComponent } from './charts/charts.component';
+import { SnackbarComponentComponent } from './snackbar-component/snackbar-component.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { ChartsComponent } from './charts/charts.component';
     InfoComponent,
     MainComponent,
     NavbarComponent,
-    ChartsComponent
+    ChartsComponent,
+    SnackbarComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ import { ChartsComponent } from './charts/charts.component';
     MatTooltipModule,
     NgxChartsModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
   providers: [
     HttpService,
