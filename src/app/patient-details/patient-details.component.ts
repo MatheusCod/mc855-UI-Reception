@@ -10,37 +10,47 @@ import { DataService } from '../data.service';
 export interface PatientDetails {
   timestamp: Date;
   responsibleName: string;
-  id: string,
+  id: string;
   name: string;
-  status: StatusId
+  status: StatusId;
 }
 
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
-  styleUrls: ['./patient-details.component.scss']
+  styleUrls: ['./patient-details.component.scss'],
 })
-export class PatientDetailsComponent{
-
+export class PatientDetailsComponent {
   constructor(private dataService: DataService) {}
+
+  initial_status : string = '';
 
   @Input() patientStatusOptions = statusOptions;
 
-  @Input() patientDetails = {
+  _patientDetails = {
     timestamp: new Date(),
     responsibleName: 'Responsible',
     name: 'Name',
-    id: '123'
+    id: '123',
   };
+
+  @Input() set patientDetails(value: any) {
+    this.initial_status = ''
+    this._patientDetails = value;
+  }
+
+  get patientDetails(): any {
+    return this._patientDetails;
+  }
 
   @Input() status!: string;
 
-
   changeStatus(value: keyof typeof invertedStatusOptions) {
     const statusId = invertedStatusOptions[value];
-    this.dataService.updateStatus(this.patientDetails.id, statusId).subscribe((result) => {    });
+    this.dataService
+      .updateStatus(this._patientDetails.id, statusId)
+      .subscribe((result) => {});
   }
 
   booleanToPortuguese = booleanToPortuguese;
-
 }
