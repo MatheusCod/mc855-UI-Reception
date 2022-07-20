@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from '@angular/core';
 
 import type {
   StatusId,
@@ -9,7 +15,6 @@ import type { PatientDetails } from '../patient-details/patient-details.componen
 
 interface PatientOverview {
   patientNumber: number;
-  description: string;
   selected: boolean;
   patientStatusId: StatusId;
 }
@@ -19,25 +24,28 @@ interface PatientOverview {
   templateUrl: './patients-list.component.html',
   styleUrls: ['./patients-list.component.scss'],
 })
-export class PatientsListComponent implements OnChanges{
-
+export class PatientsListComponent implements OnChanges {
   selected = 0;
 
   @Output() patientChanged = new EventEmitter<number>();
 
-  // MOCK
   @Input() patientsList!: PatientDetails[];
 
   @Input() patients!: PatientOverview[];
 
   ngOnChanges() {
     if (!this.patientsList) return;
-    this.patients = this.patientsList.map((value, index) => {
+    let sortedList = this.patientsList.sort((b, a) => {
+      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+    }).filter((a) => {
+      return ((new Date().getTime() - new Date(a.timestamp).getTime()) < 60 * 60 * 1000) && a.status != "done"
+    })
+    ;
+    this.patients = sortedList.map((value, index) => {
       const patient: Patient = {
         patientNumber: index,
-        description: value.problemDescription,
         selected: false,
-        patientStatusId: 'waiting_line',
+        patientStatusId: value.status,
       };
       return patient;
     });

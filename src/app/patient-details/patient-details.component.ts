@@ -2,57 +2,55 @@ import { Component, Input } from '@angular/core';
 import {
   patientStatus as statusOptions,
   invertedPatientStatus as invertedStatusOptions,
+  StatusId,
 } from 'src/app/patient-card/patient-card.component';
 import { booleanToPortuguese } from 'src/utils/utils';
+import { DataService } from '../data.service';
 
 export interface PatientDetails {
   timestamp: Date;
   responsibleName: string;
+  id: string;
   name: string;
-  birthDate: Date;
-  CNS: string;
-  undergoingThreatment: boolean;
-  undergoingMedicine: boolean;
-  hasChronicDisease: boolean;
-  problemDescription: string;
-  specialityRequired: string;
-  isScheduled: boolean;
-  scheduleDate: Date;
+  status: StatusId;
 }
 
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
-  styleUrls: ['./patient-details.component.scss']
+  styleUrls: ['./patient-details.component.scss'],
 })
-export class PatientDetailsComponent{
+export class PatientDetailsComponent {
+  constructor(private dataService: DataService) {}
+
+  initial_status : string = '';
 
   @Input() patientStatusOptions = statusOptions;
-  
-  @Input() patientDetails = {
+
+  _patientDetails = {
     timestamp: new Date(),
     responsibleName: 'Responsible',
     name: 'Name',
-    birthDate: new Date(),
-    CNS: '124124172984791824',
-    undergoingThreatment: true,
-    undergoingMedicine: true,
-    hasChronicDisease: false,
-    problemDescription: 'Something lorem ipsum',
-    specialityRequired: 'Specialty',
-    isScheduled: true,
-    scheduleDate: new Date(),
+    id: '123',
   };
-  
+
+  @Input() set patientDetails(value: any) {
+    this.initial_status = ''
+    this._patientDetails = value;
+  }
+
+  get patientDetails(): any {
+    return this._patientDetails;
+  }
+
   @Input() status!: string;
 
-  constructor() { }
-
-  // MOCK
   changeStatus(value: keyof typeof invertedStatusOptions) {
     const statusId = invertedStatusOptions[value];
+    this.dataService
+      .updateStatus(this._patientDetails.id, statusId)
+      .subscribe((result) => {});
   }
 
   booleanToPortuguese = booleanToPortuguese;
-
 }

@@ -1,0 +1,35 @@
+<div>
+  <mat-tab-group>
+    <mat-tab label="Tipos de Atendimentos">
+      <div style="display: flex">
+        <div style="flex: 1 100%;; background-color: #efefef">
+          <div>
+            <ngx-charts-pie-chart
+              [results]="patientsTypeMapped"
+              [legend]="true"
+              [legendTitle]="'Tipos de Atendimentos'"
+              [view]="[1200,600]"
+              [labels]="true"
+            >
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Picos de pacientes por horário">
+      <ngx-charts-bar-vertical
+      [view]="[1000,400]"
+      [results]="hoursObj"
+      [xAxisLabel]="'Horário'"
+      [legendTitle]="'Quantidade de pacientes por horário'"
+      [yAxisLabel]="'Pacientes'"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      >
+  </ngx-charts-bar-vertical>
+    </mat-tab>
+  </mat-tab-group>
+</div>
